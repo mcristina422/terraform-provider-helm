@@ -111,6 +111,7 @@ func TestAccResourceRelease_update(t *testing.T) {
 			Config: testAccHelmReleaseConfigBasic(testResourceName, namespace, name, "0.6.3"),
 			Check: resource.ComposeAggregateTestCheckFunc(
 				resource.TestCheckResourceAttr("helm_release.test", "metadata.0.revision", "2"),
+				resource.TestCheckResourceAttr("helm_release.test", "metadata.0.values", "<sensitive>"),
 				resource.TestCheckResourceAttr("helm_release.test", "metadata.0.version", "0.6.3"),
 				resource.TestCheckResourceAttr("helm_release.test", "status", "DEPLOYED"),
 			),
